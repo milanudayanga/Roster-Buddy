@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <meta http-equiv="Content-Security-Policy" content="script-src * data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src * data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Roster Buddy</title>
+    </head>
+    <body>
+        <div class="app" id="deviceready">
+            <!-- Start of registration page -->
+            <div data-role="page" id="signIn">
+
+                <div data-role="header">
+                    <h1>Welcome </h1>
+                </div><!-- /header -->
+
+                <div data-role="content">
+                    <div>
+                        <p style="text-align:center;"> <img src="img/logo1.png" class="center" /></p>
+                    </div>
+
+                    <form id="signInData">
+
+                        <input type="text" name="emailSignInName" id="mailSignUpIn" placeholder="E-mail" value="">
+                        <input type="password" name="passwordSignInName" id="passwordSignInId" placeholder="Password" value="" autocomplete="off">
+
+                        <button class="ui-btn ui-shadow" type="button" id="signInBtn">Sign in</button>
+                    </form>
+
+                    <p>Create an Account?
+                        <button class="ui-btn ui-shadow" type="button" onclick="window.location.href='#signUp'">Register</button>
+                    </p>
+                </div><!-- /content -->
+
+                <div data-role="footer" data-position="fixed">
+                    <h5>Roster Buddy © Milan & Bharatkumar 2019</h5>
+                </div><!-- /footer -->
+            </div><!-- /page -->
+
+            <div data-role="page" id="signUp">
+
+                <div data-role="header">
+                    <h1>Sign Up</h1>
+                </div><!-- /header -->
+
+                <div data-role="content">
+                    <form id="signUpData">
+
+                        <input type="text" name="fNamesignUpName" id="fNamesignUpId" placeholder="Full Name" value="">
+                        <input type="email" name="emailSignUpName" id="mailSignUpId" placeholder="E-mail" value="">
+                        <input type="number" name="mobileSignUpName" id="mobileSignUpId" placeholder="Mobile" value="">
+                        <input type="number" name="Address" id="mobileAddress" placeholder="Address" value="">
+                        <input type="password" name="passwordSignUpName" id="passwordsignUpId" placeholder="Password" value="" autocomplete="off">
+
+                        <button class="ui-btn ui-shadow" type="button" id="signUpBtn">Submit</button>
+
+                    </form>
+
+
+                    <p>Already A member ?
+                        <button class="ui-btn ui-shadow" type="button" onclick="window.location.href='#signIn'">Sign In</button>
+
+                        </p>
+                </div><!-- /content -->
+
+                <div data-role="footer" data-position="fixed">
+                    <h5>Roster Buddy © Milan & Bharatkumar 2019</h5>
+                </div><!-- /footer -->
+            </div><!-- /page -->
+
+            <!-- Start of User page -->
+            <div data-role="page" id="user">
+
+                <div data-role="header" data-position="fixed">
+                    <a href="#NavigationPage" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-delete">Menu</a>
+                    <h1>Add New Employees</h1>
+
+                </div><!-- /header -->
+
+                <div data-role="content">
+                    <p>Add Employees's Details </p>
+                    <form id="addToMlab">
+                        <input type="text" name="title" id="textinput-hide" placeholder="Name of Employee" value="">
+                        <input type="text" name="Date" id="textinput-date" placeholder="Date Of Birth" value="">
+                        <input type="text" name="Email" id="email" placeholder="Email" value="">
+
+                        <textarea cols="40" rows="20" name="textarea" id="textarea" placeholder="Description"></textarea>
+                        <button id="capture" type="button" class="ui-btn ui-icon-camera ui-btn-icon-left">Capture</button>
+                    </form>
+
+                    <div id="loadImage"><img src="img/load.gif" id = "myImage"></img></div>
+                    <button class="ui-btn ui-shadow" type="button" id="saveToBuy">Save</button>
+
+                </div><!-- /content -->
+
+                <div data-role="footer" data-position="fixed">
+                    <h5>Roster Buddy © Milan & Bharatkumar 2019</h5>
+                </div><!-- /footer -->
+            </div><!-- /page -->
+
+            <!-- Start of plan page -->
+            <div data-role="page" id="toBuyList">
+
+
+                <div data-role="header" data-position="fixed">
+                    <button class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-delete" type="button" onclick="window.location.href='#NavigationPage'">Menu</button>
+
+
+                    <h1>Employee List</h1>
+                <!--   <a href="#user" class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check">Add</a>
+                    -->
+                </div><!-- /header -->
+                <button class="ui-btn ui-shadow" type="button" id="show">Display</button>
+
+
+                    <div data-role="content" role="main" class="ui-content" id="displayToBuy">
+                    <ul data-role="listview" data-inset="true" id="toBuyListView">
+
+
+                    </ul>
+
+                    <div data-role="popup" id="popupParis" data-overlay-theme="b" data-theme="b" data-corners="false">
+                        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img id="popphoto" src="" style="max-height:512px;" alt="Paris, France">
+                        <form id="emailform" >
+                        <input type="text" name="roster" id="roster" placeholder="Time/Date" value="">
+                            <input type="text" name="desc" id="desc" placeholder="Description" value="">
+
+                        <div>
+                            <button id="purchasedBtn">Send</button>
+                        </div>
+                        </form>
+
+                    </div>
+
+                </div><!-- /content -->
+                <div data-role="footer" data-position="fixed">
+                    <h5>Roster Buddy © Milan & Bharatkumar 2019</h5>
+                </div><!-- /footer -->
+
+            </div><!-- /page -->
+
+
+
+
+            <div data-role="page" id="NavigationPage">
+
+
+                <div data-role="header" data-position="fixed">
+                    <h1>Your Selection</h1>
+                </div><!-- /header -->
+
+
+
+                <div data-position="Center">
+
+                    <a href="#user" class="ui-btn">Add Employees</a>
+
+                    <a href="#toBuyList" class="ui-btn">Employee List</a>
+
+                    <a class="ui-btn" id="signOut">Sign Out</a>
+
+
+
+                </div><!-- /content -->
+
+                <div data-role="footer" data-position="fixed">
+                    <h5>Roster Buddy © Milan & Bharatkumar 2019</h5>
+                </div><!-- /footer -->
+
+            </div><!-- /page -->
+
+
+
+        </div>
+
+
+       <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
