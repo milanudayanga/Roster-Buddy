@@ -18,7 +18,7 @@
     "cordova-plugin-camera": "^4.0.3",
     "express-handlebars": "^3.0.2",
     "mongodb": "^3.2.3",
-    "nodemailer": "^6.1.1",
+    "nodemailer": "^6.4.16",
     "server": "^1.0.18"
   },
   "devDependencies": {
